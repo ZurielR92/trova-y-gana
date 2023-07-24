@@ -66,8 +66,6 @@ function App() {
   }
 
   const handleConfettiClick = () => {
-    const canvas = document.getElementById('confetti-canvas');
-
     const confettiSettings = {
       particleCount: 500,
       spread: 140,
