@@ -149,14 +149,14 @@ function App() {
       {
         state === 'loading' ?
         <div className='container-loading'>
-          <img src="/loading2.gif" alt="" />
+          <img src="/loading3.png" alt="" />
           <span>Buscando palabras...</span>
         </div>:null
       }
       {
         state === 'loading2' ?
         <div className='container-loading'>
-          <img src="/loading2.gif" alt="" />
+          <img src="/loading3.png" alt="" />
           <span>{status}</span>
         </div>:null
       }
