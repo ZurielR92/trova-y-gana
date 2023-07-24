@@ -23,7 +23,7 @@ function App() {
       setState('qualify')
       setqualify(aleatorioEntreCeroYUno);
       handleConfettiClick();
-    },2000)
+    },5000)
   }
 
   const reset = () => {
