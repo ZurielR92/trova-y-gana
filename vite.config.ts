@@ -8,10 +8,10 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: 'Mi PWA React', // Nombre de tu PWA
-        short_name: 'Mi PWA', // Nombre corto (máximo 12 caracteres)
-        theme_color: '#ffffff', // Color principal de la PWA
-        background_color: '#ffffff', // Color de fondo
+        name: 'Trove y Gane', // Nombre de tu PWA
+        short_name: 'Trove y Gane', // Nombre corto (máximo 12 caracteres)
+        theme_color: '#E20613', // Color principal de la PWA
+        background_color: '#FFEC00', // Color de fondo
         display: 'standalone', // Estilo de visualización: standalone, fullscreen, minimal-ui, browser
         start_url: '/',
         icons: [
