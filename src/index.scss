@@ -130,8 +130,32 @@ body {
 }
 
 .container-loading {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3A245F;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 50px;
+  }
   img {
     max-height: 500px;
+    border-radius: 500px;
+  }
+}
+
+.container-loading2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-height: 500px;
+    border-radius: 500px;
   }
 }
 

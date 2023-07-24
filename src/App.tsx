@@ -8,6 +8,7 @@ function App() {
   const [state, setState] = useState('init');
   const [word, setWord] = useState('');
   const [qualify, setqualify] = useState(0);
+  const [status, setStatus] = useState('Evaluando desempeño...')
 
   const onInit = () => {
     setState('loading');
@@ -18,9 +19,20 @@ function App() {
   }
 
   const qualifier = () => {
-    setState('loading');
+    setState('loading2');
+    setTimeout(()=>{
+      setStatus('Analizando voz...')
+    },2000)
+    setTimeout(()=>{
+      setStatus('Evaluando rimas...')
+    },3000)
+    setTimeout(()=>{
+      setStatus('Analizando coherencia...')
+    },4000)
+
     setTimeout(()=> {
       setState('qualify')
+      setStatus('Evaluando desempeño...');
       setqualify(aleatorioEntreCeroYUno);
       handleConfettiClick();
     },5000)
@@ -137,7 +149,15 @@ function App() {
       {
         state === 'loading' ?
         <div className='container-loading'>
-          <img src="/loading.gif" alt="" />
+          <img src="/loading2.gif" alt="" />
+          <span>Buscando palabras...</span>
+        </div>:null
+      }
+      {
+        state === 'loading2' ?
+        <div className='container-loading'>
+          <img src="/loading2.gif" alt="" />
+          <span>{status}</span>
         </div>:null
       }
 
