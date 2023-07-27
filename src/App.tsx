@@ -9,6 +9,7 @@ function App() {
   const [word, setWord] = useState('');
   const [qualify, setqualify] = useState(0);
   const [status, setStatus] = useState('Evaluando desempeño...')
+  const [s, setS] = useState(false);
 
   const onInit = () => {
     setState('loading');
@@ -18,8 +19,18 @@ function App() {
     }, 2000)
   }
 
-  const qualifier = () => {
+  const trova = () => {
     setState('loading2');
+    setStatus('Escuchando trova...')
+    setS(true)
+  }
+
+  const qualifier = (q:number) => {
+    if(s === false) {
+      return;
+    }
+    setState('loading2');
+    setStatus('Evaluando desempeño...')
     setTimeout(()=>{
       setStatus('Analizando voz...')
     },2000)
@@ -33,8 +44,10 @@ function App() {
     setTimeout(()=> {
       setState('qualify')
       setStatus('Evaluando desempeño...');
-      setqualify(aleatorioEntreCeroYUno);
+
+      setqualify(q);
       handleConfettiClick();
+      setS(false);
     },5000)
   }
 
@@ -49,67 +62,106 @@ function App() {
 
   function obtenerPalabraAleatoria() {
     const palabrasTrovas = [
+      "Flores",
+      "Medellín",
+      "Feria",
+      "Desfile",
+      "Silleteros",
+      "Antioquia",
+      "Tradición",
+      "Cultura",
+      "Paisaje",
+      "Colorido",
+      "Alegría",
+      "Música",
+      "Gastronomía",
+      "Paisa",
+      "Orquídea",
+      "Feriado",
+      "Salsa",
+      "Guayabera",
+      "Sombrero",
+      "Carrera",
+      "Cumbia",
+      "Festival",
+      "Reina",
+      "Folklore",
+      "Jardín",
+      "Arrieros",
+      "Cabalgata",
+      "Trovas",
+      "Alpargatas",
+      "Campesino",
+      "Chiva",
+      "Arepa",
       "Bandeja paisa",
-      "Sancocho antioqueño",
-      "Arepa antioqueña",
-      "Ajiaco",
-      "Berraco",
-      "Tominejo",
-      "Panela",
       "Café",
-      "Guayabo",
-      "Tradiciones folclóricas",
-      "Festival de la Trova",
-      "Festival de Danzas",
-      "Mariachi",
-      "Corrido antioqueño",
-      "Tejo",
-      "Rana",
-      "Fonda antioqueña",
-      "Viejoteca",
-      "Café de hoya",
-      "Ron Medellín",
-      "Pueblito paisa",
-      "Atardecer en Santa Elena",
-      "Desfile de Autos Clásicos",
-      "Caballo de Paso Fino",
-      "Feria Ganadera",
-      "Haciendas Cafeteras",
-      "Café de exportación",
-      "Cometas",
-      "Pueblito paisa",
-      "Trianón",
-      "Fondas Silleteras",
-      "La Macarena",
-      "Plaza de Flores",
-      "Danzas folclóricas",
-      "Trova antioqueña",
-      "Atuendo tradicional",
-      "Cimarrona",
-      "Pueblos Antioqueños",
-      "Recuca",
-      "Juegos tradicionales",
-      "Chapoleras",
-      "Sanjuanero",
-      "Marinera",
-      "Parque de las Luces",
-      "Comuna 13",
-      "Arte callejero",
-      "Grafitis",
-      "Palomas Blancas",
+      "Chirimía",
+      "Bandola",
+      "Guasca",
+      "Carnaval",
+      "Ganado",
+      "Parque Norte",
+      "Fiestas",
+      "Peña",
+      "Bailar",
+      "Cerveza",
+      "Helado",
+      "Mañana de flores",
+      "Pueblito Paisa",
+      "Aves",
+      "Montañero",
+      "Mulas",
+      "Palma de cera",
       "Parque Arví",
-      "Catedral Metropolitana",
-      "Pueblos cercanos a Medellín",
-      "Parque Lleras",
-      "Ruta de las Flores",
-      "Feria de los Mercados Campesinos",
-      "Carrera 70",
-      "Estadio Atanasio Girardot",
-      "Carnaval de las Flores",
-      "Plaza de Cisneros",
-      "Gobernación de Antioquia",
-      "Feria de las Colonias",
-      "Desfile de Carros Antiguos"
+      "Plaza Botero",
+      "Tradicional",
+      "Rumba",
+      "Alebrijes",
+      "Caballos",
+      "Comida típica",
+      "Silleteros",
+      "Traje típico",
+      "Cuenteros",
+      "Chicharrón",
+      "Yipao",
+      "Artesanía",
+      "Feria equina",
+      "Silleta",
+      "Cuatro",
+      "Parranda",
+      "Sancocho",
+      "Silleta",
+      "Recua de mulas",
+      "Charango",
+      "Acordeón",
+      "Feria de las flores",
+      "Zócalo",
+      "Baile",
+      "Cultivos",
+      "Hacienda",
+      "Compartir",
+      "Cosecha",
+      "Farolitos",
+      "Guirnaldas",
+      "Desfile de carros antiguos",
+      "Alegria",
+      "Pueblos cercanos",
+      "Antorchas",
+      "Feria de los pájaros",
+      "Chocolatería",
+      "Marinera",
+      "Carriel",
+      "Artesanos",
+      "Conciertos",
+      "Música en vivo",
+      "Danza",
+      "Mariposario",
+      "Traje de gala",
+      "Exposición de flores",
+      "Colores",
+      "Ciclopaseo",
+      "Carnaval de la vida"
     ];
 
     const indiceAleatorio = Math.floor(Math.random() * palabrasTrovas.length);
@@ -141,7 +193,7 @@ function App() {
         state === 'init' ?
         <div className='container-welcome'>
           <img className='welcome' src="/bienvenida_alkomprar.png" alt="" /> 
-          <button onClick={onInit}>COMENZAR</button> 
+          <button onClick={onInit}>BUSCAR PALABRA</button> 
         </div> : null
 
       }
@@ -167,7 +219,7 @@ function App() {
           <img className='title' src="/palabra_trova.png" alt="" />
           <h1 className='word'>{word}</h1> 
           <img className='base' src="/base_palabra.png" alt="" /> 
-          <button onClick={qualifier}>CALIFICAR</button> 
+          <button onClick={trova}>INICIAR TROVA</button> 
         </div> : null
       }
 
@@ -187,6 +239,8 @@ function App() {
             <img src="/reload.png" alt="" />
           </button>:null
       }
+      <img onClick={()=>qualifier(1)} className='flor1' src="/flor1.png" alt="ddd" />
+      <img onClick={()=>qualifier(2)} className='flor2' src="/flor2.png" alt="ddd" />
     </div>
   )
 }

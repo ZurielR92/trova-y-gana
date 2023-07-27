@@ -10,7 +10,7 @@ export default defineConfig({
       manifest: {
         name: 'Trove y Gane', // Nombre de tu PWA
         short_name: 'Trove y Gane', // Nombre corto (máximo 12 caracteres)
-        theme_color: '#E20613', // Color principal de la PWA
+        theme_color: '#FFEC00', // Color principal de la PWA
         background_color: '#FFEC00', // Color de fondo
         display: 'standalone', // Estilo de visualización: standalone, fullscreen, minimal-ui, browser
         start_url: '/',

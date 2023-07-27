@@ -22,7 +22,7 @@ body {
   text-align: center;
   .flores-superiores {
     max-width: 80vw;
-    max-height: 150px;
+    max-height: 200px;
   }
 }
 .container-flores-inferiores {
@@ -33,7 +33,7 @@ body {
   text-align: center;
   .flores-inferiores {
     max-width: 80vw;
-    max-height: 200px;
+    max-height: 220px;
   }
 }
 
@@ -74,13 +74,13 @@ body {
   .title {
     margin-top: -100px;
     max-width: 80vw;
-    max-height: 200px;
+    max-height: 250px;
   }
   .base {
     width: fit-content;
     margin-top: -20px;
     max-width: 90vh;
-    max-height: 120px;
+    max-height: 170px;
     object-fit: contain;
 
   }
@@ -90,7 +90,7 @@ body {
     font-family: arial;
     font-style: italic;
     font-weight: 900;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     color: #3A245F;
     margin: 0;
@@ -146,7 +146,7 @@ body {
     
   }
   img {
-    max-height: 500px;
+    max-height: 600px;
     border-radius: 500px;
     animation: rotateAnimation 4s linear infinite;
   }
@@ -159,7 +159,7 @@ body {
   align-items: center;
   margin-top: -150px;
   img {
-    max-height: 500px;
+    max-height: 600px;
     border-radius: 500px;
     animation: rotateAnimation 4s linear infinite;
   }
@@ -195,4 +195,16 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.flor1 {
+  position: fixed;
+  right: 10px;
+  top: 40vh;
+}
+.flor2 {
+  position: fixed;
+  right: 10px;
+  top: 50vh;
 }
