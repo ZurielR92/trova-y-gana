@@ -235,7 +235,7 @@ function App() {
             <img src="/reload.png" alt="" />
           </button>:null
       }
-      <img onClick={()=>qualifier(1)} className='flor1' src="/flor1.png" alt="ddd" />
+      <img onClick={()=>qualifier(0)} className='flor1' src="/flor1.png" alt="ddd" />
       <img onClick={()=>qualifier(2)} className='flor2' src="/flor2.png" alt="ddd" />
     </div>
   )
