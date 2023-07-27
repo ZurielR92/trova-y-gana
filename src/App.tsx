@@ -56,10 +56,6 @@ function App() {
     setWord('');
   }
 
-  function aleatorioEntreCeroYUno() {
-    return Math.floor(Math.random() * 2);
-  }
-
   function obtenerPalabraAleatoria() {
     const palabrasTrovas = [
       "Flores",
