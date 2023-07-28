@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import confetti from 'canvas-confetti';
 
@@ -20,9 +20,11 @@ function App() {
   }
 
   const trova = () => {
-    setState('loading2');
-    setStatus('Escuchando trova...')
+    setState('loading3');
+    setStatus('esperando calificación...')
     setS(true)
+
+    setIsRunning(true)
   }
 
   const qualifier = (q:number) => {
@@ -30,15 +32,15 @@ function App() {
       return;
     }
     setState('loading2');
-    setStatus('Evaluando desempeño...')
+    setStatus('Evaluando desempeño...');
     setTimeout(()=>{
-      setStatus('Analizando voz...')
+      setStatus('Analizando voz...');
     },2000)
     setTimeout(()=>{
-      setStatus('Evaluando rimas...')
+      setStatus('Evaluando rimas...');
     },3000)
     setTimeout(()=>{
-      setStatus('Analizando coherencia...')
+      setStatus('Analizando coherencia...');
     },4000)
 
     setTimeout(()=> {
@@ -54,6 +56,8 @@ function App() {
   const reset = () => {
     setState('init');
     setWord('');
+    setSeconds(30);
+    setIsRunning(false);
   }
 
   function obtenerPalabraAleatoria() {
@@ -176,6 +180,42 @@ function App() {
     confetti(confettiSettings);
   };
 
+
+
+
+
+  const [seconds, setSeconds] = useState(30);
+  const [isRunning, setIsRunning] = useState(false);
+  const [animateClass, setAnimateClass] = useState('');
+
+  useEffect(() => {
+    let countdown:any;
+
+    if (isRunning && seconds > 0) {
+      countdown = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds - 1);
+        setAnimateClass('animate');
+      }, 1000);
+    }
+
+    if(seconds == 0 ) {
+      setIsRunning(false);
+    }
+
+    return () => clearInterval(countdown);
+  }, [isRunning, seconds]);
+
+  useEffect(() => {
+    if (animateClass) {
+      const timer = setTimeout(() => {
+        setAnimateClass('');
+      }, 300);
+
+      return () => clearTimeout(timer);
+    }
+  }, [animateClass]);
+
+
   return (
     <div className='container'>
       <div className='container-flores-superiores'>
@@ -203,9 +243,15 @@ function App() {
       }
       {
         state === 'loading2' ?
-        <div className='container-loading'>
+        <div className='container-loading2'>
           <img src="/loading3.png" alt="" />
-          <span>{status}</span>
+          <span>{ status }</span>
+        </div>:null
+      }
+      {
+        state === 'loading3' ?
+        <div className='container-loading2'>
+          <span className={`countdown-text ${animateClass}`}>{seconds}</span>
         </div>:null
       }
 
@@ -235,8 +281,18 @@ function App() {
             <img src="/reload.png" alt="" />
           </button>:null
       }
-      <img onClick={()=>qualifier(0)} className='flor1' src="/flor1.png" alt="ddd" />
-      <img onClick={()=>qualifier(2)} className='flor2' src="/flor2.png" alt="ddd" />
+
+      {
+        state === 'loading3' && seconds < 20 ?
+        <div className='butt'>
+          <div className='text'>
+            Obtener Calificación
+            <div onClick={()=>qualifier(0)} className='left'></div>
+            <div onClick={()=>qualifier(2)} className='right'></div>
+          </div>
+        </div>:null
+
+      }
     </div>
   )
 }
