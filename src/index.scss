@@ -75,6 +75,9 @@ body {
     margin-top: -100px;
     max-width: 80vw;
     max-height: 250px;
+    @media screen and (max-width: 568px) {
+      margin-top: 0px;
+    }
   }
   .base {
     width: fit-content;
@@ -111,6 +114,9 @@ body {
     cursor: pointer;
     background: linear-gradient(90deg, rgba(247,172,86,1) 0%, rgba(229,24,95,1) 52%, rgba(141,77,151,1) 100%);
     transition: all .2s ease-in-out;
+    @media screen and (max-width: 568px) {
+      margin-top: 20px;
+    }
     &:hover {
       letter-spacing: 3px;
       transform: scale(1.05);
@@ -248,6 +254,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 568px) {
+    bottom: 200px;
+  }
   .text {
     padding: 15px 100px;
     background: linear-gradient(90deg, rgba(247,172,86,1) 0%, rgba(229,24,95,1) 52%, rgba(141,77,151,1) 100%);
@@ -259,6 +268,12 @@ body {
     border-radius: 10px;
     cursor: pointer;
     position: relative;
+    text-align: center;
+    
+    @media screen and (max-width: 568px) {
+      padding: 15px 50px;
+      font-size: 17px;
+    }
 
     .left {
       position: absolute;
